@@ -1,10 +1,25 @@
 import serial
+import time
 
 print("Learning Pyserial")
 
-ser = serial.Serial('COM5', 19200, timeout=10)
+# ser = serial.Serial(port="/dev/cu.usbmodem21201", baudrate=19200, timeout=10)
+ser = serial.Serial(port="/dev/ttyUSB0", baudrate=19200, timeout=10)
 
-while not ser.is_open:
-    print("Opening...")
+# time.sleep(2.0)
+time.sleep(1)
+
+ser.reset_input_buffer()
+message = "RESET"
+print(message)
+message_bytes = (message + "\n").encode()
+print(message_bytes)
+
+ser.write(message_bytes)
+
+response_bytes = ser.readline()
+print(response_bytes)
+response = response_bytes.decode().strip()
+print(response)
 
 ser.close()
