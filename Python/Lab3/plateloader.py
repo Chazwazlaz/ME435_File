@@ -15,8 +15,6 @@ class PlateLoader:
     def disconnect(self):
         if self.ser and self.ser.is_open:
             self.ser.close()
-
-
         
 
     def send_command(self, command):
