@@ -15,12 +15,13 @@ def handle_naked_domain():
 @app.get("/api/<command>")
 def handle_plateloader_commands(command):
     with serial_lock:
-        responce = loader.send_command(command)
+        response = loader.send_command(command)
     #todo: run the command
-    return "Success!"
+    return response
 
 
 
 if __name__ == "__main__":
     print("Running Flask")
+    loader.connect()
     app.run(host="0.0.0.0", port=8080, debug=True) # use_reloader=False
