@@ -4,7 +4,7 @@ import time
 
 
 class arduino:
-    def __init__(self, port="/dev/ttyUSB0"):
+    def __init__(self, port="/dev/ttyAMA10"):
         self.port = port
 
     def connect(self):
@@ -31,7 +31,7 @@ class arduino:
 
 
 if __name__ == "__main__":
-    print("Quick Plateloader testing")
+    print("LED Testing")
     LEDFlasher = arduino()
     LEDFlasher.connect()
     response = LEDFlasher.send_command("LED ON")
