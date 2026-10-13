@@ -4,7 +4,7 @@ import time
 
 
 class arduino:
-    def __init__(self, port="/dev/ttyUSB0"):
+    def __init__(self, port="COM4"):
         self.port = port
 
     def connect(self):
