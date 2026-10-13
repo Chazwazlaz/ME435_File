@@ -31,7 +31,7 @@ class arduino:
 
 
 if __name__ == "__main__":
-    print("Quick Plateloader testing")
+    print("LED Testing")
     LEDFlasher = arduino()
     LEDFlasher.connect()
     response = LEDFlasher.send_command("LED ON")
