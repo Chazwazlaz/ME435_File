@@ -5,7 +5,7 @@ import threading
 app = flask.Flask(__name__, static_url_path="", static_folder="public")
 
 serial_lock = threading.Lock()
-LEDFlasher = arduino.arduino("/dev/ttyACM0")
+LEDFlasher = arduino.arduino("COM4")
 
 
 @app.get("/")
@@ -30,4 +30,4 @@ def handle_flash(num_flashes, period_ms):
 if __name__ == "__main__":
     print("Running Flask")
     LEDFlasher.connect()
-    app.run(host="0.0.0.0", port=5000, debug=True, use_reloader=False)
+    app.run(host="0.0.0.0", port=5001, use_reloader=False)
