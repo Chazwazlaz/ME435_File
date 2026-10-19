@@ -5,7 +5,7 @@ import threading
 app = flask.Flask(__name__, static_url_path="", static_folder="public")
 
 serial_lock = threading.Lock()
-LEDFlasher = arduino.arduino("COM4")
+LEDFlasher = arduino.arduino("/dev/ttyACM0")
 
 
 @app.get("/")
