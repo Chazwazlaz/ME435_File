@@ -38,7 +38,7 @@ def run_test_drive_system():
 
     run_test_go_stop(robot)
     # run_test_go_straight_for_seconds(robot)
-    # run_test_go_straight_for_inches(robot)
+    run_test_go_straight_for_inches(robot)
     # run_test_spin_in_place_for_seconds(robot)
     # run_test_spin_in_place_for_degrees(robot)
     # run_test_draw_polygon(robot)
@@ -94,6 +94,7 @@ def run_test_go_straight_for_seconds(robot: Rosebot):
         # TODO: 4. Call the  go_straight_for_seconds  method of the   drive_system
         #  of the robot, sending it the input  seconds  and  speed.
         # -------------------------------------------------------------------------
+        robot.drive_system.go_straight_for_seconds(seconds, speed)
 
 
 def run_test_go_straight_for_inches(robot: Rosebot):
@@ -118,6 +119,7 @@ def run_test_go_straight_for_inches(robot: Rosebot):
         #  of the robot, sending it the input  inches  and  speed.
         #  (The go_straight_for_inches method uses the same speed for both wheels.)
         # -------------------------------------------------------------------------
+        robot.drive_system.go_straight_for_inches(inches, speed)
 
 
 def run_test_spin_in_place_for_seconds(robot: Rosebot):
