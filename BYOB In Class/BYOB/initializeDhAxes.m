@@ -12,19 +12,17 @@ app.jointAngles = [0 0 0 0]; % Start at the zero angle position.
 % Begin: Code that can go into your GUI's StartupFcn.
 clc
 
-% Prepare the axes_arm properties
 app.axes_arm.View = [35 20];
 app.axes_arm.Visible = 'off';
 hold(app.axes_arm, 'on');
 
-% These properties keep the Axes from automatically resizing
+
 app.axes_arm.XLim = [-450 450];
 app.axes_arm.YLim = [-450 450];
 app.axes_arm.ZLim = [-110 520];
 
-% Create vertices for all the patches
-makeStlLink("BYOB_L0.stl", app.axes_arm, [.25 .25 .25]);  % Doesn't move. No need to save a handle to it.
-% Save references to the vertices of each patch, make points 4x1 not 3x1.
+
+makeStlLink("BYOB_L0.stl", app.axes_arm, [.25 .25 .25]); 
 app.link1Patch = makeStlLink("BYOB_L1.stl", app.axes_arm, [112/255 198/255 210/255]);
 app.link1Vertices = get(app.link1Patch, 'Vertices')';
 app.link1Vertices(4,:) = ones(1, size(app.link1Vertices,2));
@@ -41,15 +39,14 @@ app.link4Patch = makeStlLink("BYOB_L4.stl", app.axes_arm, [122/255 63/255 181/25
 app.link4Vertices = get(app.link4Patch, 'Vertices')';
 app.link4Vertices(4,:) = ones(1, size(app.link4Vertices,2));
 
-% Make the links look smooth and shaded
+
 set([app.link1Patch app.link2Patch app.link3Patch app.link4Patch], 'EdgeColor', 'none');
 light('Parent', app.axes_arm, 'Position', [500 -600 900]);
 lighting(app.axes_arm, 'gouraud');
 
-% Tip marker (a dot at the end effector)
 app.tipMarker = plot3(app.axes_arm, 0, 0, 0, 'o', 'MarkerSize', 7, ...
     'MarkerFaceColor', [1 .45 0], 'MarkerEdgeColor', 'k');
-% End: Code that can go into your GUI's opening function.
+
 
 updateArm(app);
 
